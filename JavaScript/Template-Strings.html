@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Template Strings!</title>
+    <link rel="stylesheet" href="../reset.css" />
+  </head>
+  <body>
+    <h1 id="DescBiere"></h1>
+    <script>
+      const biere = {
+        nom: "La Chouffe IPA",
+        brasserie: "Chouffe",
+        motsCles: ["ipa", "forte", "épicée", "amère"],
+      };
+      
+      const elementDom = new Map([
+        [1, biere.nom],
+        [2, biere.brasserie],
+      ]);
+
+      console.log(elementDom.get(1));
+      (function modifierDom()
+      {
+        let txt = "";
+        biere.motsCles.forEach(function(value)
+        {
+            elementDom.set(elementDom.size+1, value);
+        })
+
+        elementDom.forEach(function(value,key)
+        {
+            txt += value + "<br>";
+            console.log(txt);
+        })
+
+        document.getElementById("DescBiere").innerHTML = txt;
+        
+      })();
+
+    </script>
+  </body>
+</html>
