@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Destructuring!</title>
+    <link rel="stylesheet" href="../reset.css" />
+  </head>
+
+  <body>
+    <script>
+      //4.1 Découverte
+      const [a, b] = [1, 2, 3, 4];
+
+      console.log(a);
+      console.log(b);
+
+      const [p, q, r, s] = [1, 2, 3, 4];
+      console.log(r);
+
+      const person = {
+        first: "Romain",
+        last: "Petit",
+        country: "France",
+        city: "Grenoble",
+        github: "@romainpetit",
+      };
+      // const first = person.first;
+      // const first = last.first;
+      const { first, last, country, city, github } = person;
+      console.log(first);
+      console.log(last);
+      console.log(github);
+
+      const team = ["Franck", "Harry", "René", "Sabine", "Silvie"];
+
+      // 4.2 Inversion de valeurs
+      let performing = "beyounce";
+      let backstage = "booba";
+      [performing, backstage] = [backstage, performing];
+      console.log(performing, backstage);
+
+      // 4.3 Conversion de devises
+      function convertEuros(amount) {
+        const converted = {
+          USD: amount * 0.76,
+          BTC: amount * 0.00011,
+          KHR: amount * 4459.57,
+        };
+        return converted;
+      }
+
+      const { KHR } = convertEuros(10);
+      console.table(KHR);
+      const { KHR: Riel } = convertEuros(10);
+      console.table(Riel);
+    </script>
+  </body>
+</html>

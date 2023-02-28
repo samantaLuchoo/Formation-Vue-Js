@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fonctions!</title>
+  </head>
+  <body>
+    <script>
+      //2.1 Fonctions simples
+      const sayHello = () =>  console.log("Hello");
+
+      const sayMyName = (first, last) => console.log(first, last);
+      
+      const sayMyAge = age => console.log("You are " + age + " years old");
+     
+      sayHello();
+      sayMyName("Odile", "Crok");
+      sayMyAge(23);
+      //----------------------//
+      //2.2 this
+      const object = {
+        color: "red",
+        shape: "circle",
+        threeDimensions: false,
+        showThis: function() {   
+            console.log(this);
+        },
+      };
+      object.showThis();
+
+      //----------------------//
+      //2.3 Application
+      const odile = {
+        name: {
+          first: "Odile",
+          last: "Crok",
+        },
+        age: 23,
+        sayHello:() => console.log("Hello"),
+        sayMyName: function () {
+          console.log(this.name.first + " " + this.name.last);
+        },
+        sayMyAge: function () {
+          console.log(this.age);
+        },
+      };
+
+      odile.sayHello();
+      odile.sayMyName();
+      odile.sayMyAge();
+    </script>
+  </body>
+</html>
+(1-1/1)
+Powered by Redmine © 2006-2022 Jean-Philippe Lang

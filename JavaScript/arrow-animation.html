@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Arrow Functions !</title>
+    <style>
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        font-weight: 100;
+        color: white;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      .box {
+        background: black
+          url(https://unsplash.it/1500/1500?image=571&blur=0.5&center=top) top
+          fixed no-repeat;
+        width: 50px;
+        height: 50px;
+        padding: 50px;
+        transition: width 0.2s, height 0.6s;
+        position: relative;
+        overflow: visible;
+      }
+      .box.opening {
+        width: 500px;
+        height: 500px;
+      }
+      .box h2 {
+        position: absolute;
+        display: inline-block;
+        font-size: 100px;
+        transform: translateX(-300%);
+        transition: all 0.5s;
+        top: 0;
+      }
+      .box p {
+        position: absolute;
+        width: calc(100% - 100px);
+        transform: translateX(200%);
+        transition: all 0.5s;
+        bottom: 0;
+      }
+      .box.open > * {
+        transform: translateX(0%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div onclick="animation()" id= "myAni" class="box" >
+        <h2>Romain Petit</h2>
+        <p class="social">@SydevMauritius</p>
+      </div>
+    </div>
+    <script>
+      // 2.4
+      function animation() 
+      {
+        let id = null;
+        const boxElement = document.querySelector("#myAni");
+        clearInterval(id);
+        if (boxElement.classList.contains('opening','open')) 
+            {
+                boxElement.classList.remove('opening','open');
+                clearInterval(id);
+            }
+        else
+        {
+            boxElement.classList.add('opening');
+            id = setInterval(addOpen, 2000);
+        }
+       
+        function addOpen()
+        {
+             boxElement.classList.add('open');
+        };
+      }
+      
+    </script>
+  </body>
+</html>
