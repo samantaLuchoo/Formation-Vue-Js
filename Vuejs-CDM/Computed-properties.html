@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <title>Conditional properties</title>
+    </head>
+    <body >
+        <div id="app">
+          <h1>Voici les livres qu'on vous recommendent : </h1>
+          <div v-if="Show === false">
+            <ul>
+                <li v-for='(book,id) in books' :key="book.id">
+                    Title : {{book.title}}, 
+                    Author: {{book.author}}, 
+                    Language: {{book.language}}, 
+                    Rating: {{book.rating}}
+                </li>
+              </ul>
+          </div>
+          <div v-else>
+            <ul>
+              <li v-for='(book,id) in getBooks' :key="book.id">
+                  Title : {{book.title}}, 
+                  Author: {{book.author}}, 
+                  Language: {{book.language}}, 
+                  Rating: {{book.rating}}
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <button type="button" v-on:click="Reverse()">Reverse</button>
+          </div>
+
+          <input type="text" v-model="Filtre"/>
+          <button type="button" v-on:click="filtreApplied()">Filtrez</button>
+          
+          
+        </div>
+    
+        <script>
+            const { createApp } = Vue
+      
+            Vue.createApp({
+              data() {
+                return {
+                    books: [
+                            {id: 1, title: "Moonlight", author: "Luchoo Samanta", language: "English", rating: 6}, 
+                            
+                            {id: 2,title: "The star", author: "Leesonyuk Judah", language: "Korean", rating: 9},
+                            
+                            {id: 3,title: "Strength", author: "Quirin Kelly", language: "French", rating: 8},
+                            
+                            {id: 4,title: "Free spirited", author: "Tengnah Javed", language: "French", rating: 6},
+                        ],
+                        Show: false,
+                        Filtre: null,
+                        
+                 } 
+              },
+              methods:
+              {
+                filtreApplied()
+                {
+                    this.Show = (this.Filtre != null || this.Filtre != "" ) ? true : false;
+                    
+                },
+              
+                Reverse() 
+                {
+                    this.books =  [...this.books].reverse();
+                }
+              },
+              computed:
+              {
+                  getBooks()
+                  {
+                    return this.books.filter((book) => book.title.startsWith(this.Filtre));
+                  }
+              }
+            }).mount('#app')
+        </script>
+      </body> 
+</html>

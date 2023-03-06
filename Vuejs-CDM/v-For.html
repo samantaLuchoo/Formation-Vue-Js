@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title></title>
+  </head>
+
+  <body >
+    <div id="app">
+      <h1>Voici la liste des personnes enregistrées: </h1>
+      <div v-if="Show">
+        <ul>
+          <li v-for="person in persons" :key="person.nom">
+              {{person.nom}}
+              {{person.prenom}}
+              {{person.age}}
+          </li>
+        </ul>
+      </div>
+      
+      <button @click="Toggle()">Toggle</button>
+    </div>
+
+    <script>
+        const { createApp } = Vue
+  
+        Vue.createApp({
+          data() {
+            return {
+                persons: [
+                        {nom: "Luchoo", prenom: "Samanta", codePostal: 2352}, 
+                        
+                        {nom: "Leesonyuk", prenom: "Judah", codePostalge: 2352},
+                        
+                        {nom: "Quirin", prenom: "Kelly", codePostal: 3298},
+                        
+                        {nom: "Tengnah", prenom: "Javed", codePostal: 2667},
+                    ],
+                    Show: false,
+             } 
+          },
+          methods: 
+          {
+              Toggle() {
+                this.Show = this.Show = !this.Show ;
+              }
+          }
+        }).mount('#app')
+    </script>
+  </body> 
+</html>

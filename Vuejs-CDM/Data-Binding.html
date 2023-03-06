@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Template Strings!</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <script src = "https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <style>
+        .layout {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+          font-weight: 100;
+          color: black;
+          overflow: hidden;
+          padding-block-start:10%;
+        }
+        
+        .h1 {
+          display: "block";
+        }
+
+        .input {
+          display: block;
+        }
+
+    </style>
+  </head>
+  <body>
+
+    <div id="app"> 
+      <div class= "layout"> 
+        <h1> Bonjour ! Je suis {{ message }} </h1>
+      </div>
+      <div class= "input">
+        <input  type="text" placeholder="Nom" v-model="lname"/> 
+        <input  type="text" placeholder="Prénom" v-model="fname"/> 
+        <button type="button" v-on:click="getData()">Ok</button>
+      </div>
+      </div>
+    </div>
+
+    <script>
+      const { createApp } = Vue
+
+      createApp({
+        data() {
+          return {
+            fname : null,
+            lname : null,
+            message: null
+           } 
+        },
+        methods: {
+          getData() {
+              this.message = this.lname + this.fname;
+          }
+        }
+      }).mount('#app')
+
+    </script>
+  </body>
+</html>
